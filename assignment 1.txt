@@ -1,0 +1,848 @@
+1.Difference between HTTP and HTTPS
+
+
+
+ 1. Security
+
+* HTTP (HyperText Transfer Protocol)
+  ❌ Data is sent in plain text
+  ❌ Anyone on the network can read or modify it
+* HTTPS (HTTP Secure)
+  ✅ Data is encrypted using TLS/SSL
+  ✅ Protects against eavesdropping and tampering
+
+ 2. Data Protection
+
+* HTTP: Passwords, forms, cookies can be stolen
+* HTTPS: Data stays private and intact
+
+ 3. Authentication
+
+* HTTP: No verification of the website
+* HTTPS: Uses SSL/TLS certificates** to verify the site is legitimate (prevents fake websites)
+
+ 4. Browser Behavior
+
+* HTTP:
+  ⚠️ Marked as *“Not Secure”* in modern browsers
+* HTTPS:
+  🔒 Shows a padlock icon
+  ✔ Trusted by browsers
+
+ 5. SEO & Performance
+
+* HTTP: Worse SEO ranking
+* HTTPS:
+  ✅ Google ranking boost
+  ✅ Required for modern features (HTTP/2, service workers, PWA)
+
+
+2.Define web architecture and DNS
+
+
+Web architecture is the overall structure and design of how a web application works, including how its components interact over the internet.
+
+It defines:
+
+* How **clients** (browsers, mobile apps) request data
+* How **servers** process requests
+* How **databases** store data
+* How information flows between these parts
+
+Basic components:
+
+1. Client – Web browser or user interface
+2. Web Server – Handles HTTP/HTTPS requests (e.g., Apache, Nginx)
+3. Application Server** – Executes business logic
+4. Database – Stores and retrieves data
+
+Common types of web architecture:
+
+* 1-tier – All components in one system
+* 2-tier – Client ↔ Server
+* 3-tier – Client ↔ Application Server ↔ Database
+* N-tier / Microservices – Scalable, distributed systems
+
+ Purpose: Scalability, performance, security, and maintainability
+
+DNS (Domain Name System)
+
+DNS is a system that translates **human-readable domain names** into **IP addresses** that computers use to identify each other.
+
+Example:
+
+```
+www.google.com → 142.250.190.14
+```
+
+Why DNS is needed:
+
+* Humans remember names easily
+* Computers communicate using IP addresses
+
+How DNS works (simplified):
+
+1. User enters a domain name in the browser
+2. DNS resolver searches for the IP address
+3. DNS server returns the IP
+4. Browser connects to the web server
+
+Main DNS components:
+
+* Domain Name – e.g., example.com
+* DNS Resolver – Finds the IP
+* Name Servers – Store DNS records
+* DNS Records – A, AAAA, CNAME, MX, etc.
+
+ Purpose: Makes the internet user-friendly and fast
+
+
+
+3.Difference between ARIA and WAI ARIA
+
+
+
+ 1. What exactly is WAI-ARIA?
+
+WAI-ARIA is a W3C accessibility specification that adds extra information to HTML so assistive technologies (screen readers, braille displays) can understand complex or dynamic web interfaces.
+
+It is mainly used when **HTML alone is not enough.
+
+
+ 2. Why ARIA is needed
+
+Modern web apps use:
+
+* JavaScript
+* Dynamic content
+* Custom UI components (modals, sliders, dropdowns)
+
+These elements often:
+
+* Look correct visually
+* But are "invisible or confusing" to screen readers
+
+ ARIA provides meaning and behavior to such elements.
+
+
+ 3. Core ARIA concepts
+
+ (a) Roles
+
+Define what an element is
+
+```html
+<div role="button">Submit</div>
+<div role="dialog">Popup</div>
+```
+
+Common roles:
+
+* button
+* navigation
+* dialog
+* menu
+* alert
+
+
+ (b) States
+
+Describe current condition
+
+```html
+<button aria-expanded="false">Menu</button>
+<input aria-checked="true">
+```
+
+Examples:
+
+* aria-expanded
+* aria-disabled
+* aria-selected
+
+
+ (c) Properties
+
+Provide extra information
+
+```html
+<input aria-label="Email address">
+<div aria-describedby="help-text"></div>
+```
+
+Examples:
+
+* aria-label
+* aria-labelledby
+* aria-describedby
+
+
+ 4. ARIA vs Semantic HTML (VERY IMPORTANT)
+
+ ❌ Bad practice
+
+```html
+<div role="button">Click</div>
+```
+
+ ✅ Best practice
+
+```html
+<button>Click</button>
+```
+
+ Rule #1 of ARIA
+
+> If you can use native HTML, DO NOT use ARIA.
+
+Native HTML:
+
+* Is automatically accessible
+* Has built-in keyboard support
+* Works better with screen readers
+
+
+ 5. When you SHOULD use ARIA
+
+Use ARIA when:
+
+* Creating custom components
+* JavaScript updates content dynamically
+* Native HTML elements cannot be used
+
+Examples:
+
+* Custom dropdowns
+* Tabs
+* Sliders
+* Modals
+* Live notifications
+
+```html
+<div role="alert" aria-live="assertive">
+  Message sent successfully
+</div>
+```
+
+
+ 6. When you should NOT use ARIA
+
+Do NOT use ARIA when:
+
+* HTML already provides accessibility
+* You are replacing semantic tags unnecessarily
+
+❌ Avoid:
+
+```html
+<h1 role="heading">Title</h1>
+```
+
+✔ Instead:
+X
+```html
+<h1>Title</h1>
+```
+
+---
+
+ 7. Common ARIA mistakes
+
+* Using ARIA instead of semantic HTML
+* Forgetting keyboard navigation
+* Incorrect roles
+* Not updating ARIA states dynamically
+* Overusing "aria-label"
+
+
+ 8. Real-world example (Custom button)
+
+ Without ARIA (not accessible)
+
+```html
+<div onclick="submit()">Submit</div>
+```
+
+ With ARIA (accessible)
+
+```html
+<div role="button"
+     tabindex="0"
+     aria-pressed="false">
+  Submit
+</div>
+```
+
+
+ 9. Benefits of proper ARIA usage
+
+ Improves accessibility
+ Helps screen readers
+ Required for accessibility compliance (WCAG)
+ Makes apps usable for disabled users
+
+
+ 10. Summary
+
+* ARIA and WAI-ARIA are the same
+* ARIA enhances accessibility when HTML falls short
+* Always prefer semantic HTML
+* Use ARIA carefully and correctly
+
+
+4.How arithmetic operators and concatenation works in browser
+
+
+
+ 1. Arithmetic Operators in the Browser (JavaScript)
+
+JavaScript supports standard arithmetic operators:
+
+|Operator| Meaning             |Example |Result|
+| ------ | ------------------- | ------ | ---- |
+| +      | Addition            | 5 + 3  | 8    |
+| -      | Subtraction         | 5 - 3  | 2    |
+| *      | Multiplication      | 5 * 3  | 15   |
+| /      | Division            | 10 / 2 | 5    |
+| %      | Modulus (remainder) | 10 % 3 | 1    |
+| **     | Exponent            | 2 ** 3 | 8    |
+
+ Example:
+
+```js
+let a = 10;
+let b = 5;
+
+console.log(a + b); // 15
+console.log(a * b); // 50
+```
+
+
+ 2. Concatenation in the Browser
+
+ (a) String Concatenation using `+`
+
+When **`+` is used with strings**, JavaScript **joins them** instead of adding.
+
+```js
+"Hello" + " World"
+// Result: "Hello World"
+```
+
+ (b) Mixing Numbers and Strings
+
+If either operand is a string, JavaScript converts the other operand to a string and concatenates.
+
+```js
+"5" + 3   // "53"
+3 + "5"   // "35"
+```
+
+ This is called type coercion.
+
+
+ 3. Order of Execution (Left to Right)
+
+JavaScript evaluates expressions from left to right.
+
+```js
+5 + 3 + "2"   // "82"
+```
+
+Steps:
+
+1. `5 + 3 = 8`
+2. `8 + "2" = "82"` (number → string)
+
+```js
+"5" + 3 + 2   // "532"
+```
+
+Steps:
+
+1. `"5" + 3 = "53"`
+2. `"53" + 2 = "532"`
+
+---
+
+ 4. Subtraction, Multiplication, Division with Strings
+
+Other operators force numeric conversion.
+
+```js
+"10" - 2   // 8
+"10" * 2   // 20
+"10" / 2   // 5
+```
+
+ Only `+` performs concatenation.
+
+
+
+ 5. Browser Example (HTML + JS)
+
+```html
+<script>
+  let x = "10";
+  let y = 5;
+
+  document.write(x + y); // 105 (concatenation)
+  document.write("<br>");
+  document.write(x - y); // 5 (arithmetic)
+</script>
+```
+
+
+
+ 6. How Browsers Handle This Internally
+
+1. Browser runs JavaScript using its JS engine (V8, SpiderMonkey, etc.)
+2. Engine checks operand types
+3. Applies:
+
+   * Arithmetic if both are numbers
+   * Concatenation if `+` and one is string
+
+
+ 7. Best Practices to Avoid Confusion
+
+ Convert explicitly:
+
+```js
+Number("5") + 3   // 8
+String(5) + 3     // "53"
+```
+
+ Use template literals:
+
+```js
+`Total: ${5 + 3}`  // "Total: 8"
+```
+
+
+ 8. Summary
+
+* Arithmetic operators work normally with numbers
+* `+` is **special** (addition OR concatenation)
+* If a string is present → concatenation
+* Other operators convert strings to numbers
+
+
+5. create portfolio
+
+Below is a complete, simple personal portfolio website you can use directly in a browser.
+It’s student-friendly, exam-ready, and beginner-level.
+
+
+
+## 📁 File Structure
+
+```
+portfolio/
+ ├── index.html
+ ├── style.css
+ └── script.js
+```
+
+
+ 1️⃣ index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>John Doe</h1>
+    <p>Web Developer | Student</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a beginner web developer learning HTML, CSS, and JavaScript.
+      I enjoy building simple and responsive websites.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>Basic Git</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Calculator</h3>
+      <p>Simple calculator using JavaScript</p>
+    </div>
+    <div class="project">
+      <h3>To-Do App</h3>
+      <p>Task management app</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <button onclick="showMessage()">Click to Contact</button>
+  </section>
+
+  <footer>
+    <p>© 2026 John Doe</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+
+ 2️⃣ style.css
+
+```css
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+header {
+  background: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+nav {
+  background: #555;
+  padding: 10px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+}
+
+section {
+  padding: 20px;
+  background: white;
+  margin: 10px;
+}
+
+.project {
+  background: #eee;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 15px;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #333;
+  color: white;
+}
+```
+
+
+ 3️⃣ script.js
+
+```javascript
+function showMessage() {
+  alert("Email: johndoe@example.com");
+}
+```
+
+
+ How to Run
+
+1. Create a folder → `portfolio`
+2. Create the 3 files
+3. Open **index.html** in any browser
+
+
+ What this portfolio includes
+
+✔ About section
+✔ Skills section
+✔ Projects section
+✔ Contact interaction (JavaScript)
+✔ Clean layout
+✔ Beginner-friendly code
+
+
+
+6.Behind the screen how web works
+
+
+
+Below is a clear, step-by-step explanation of how the web works behind the screen, written in **simple, exam-ready language.
+
+
+Behind the Screen: How the Web Works
+
+When you type a website address in a browser and press **Enter**, many processes happen in milliseconds.
+
+
+ 1️⃣ URL Input
+
+You type a URL in the browser:
+
+```
+https://www.example.com
+```
+
+The browser understands:
+
+* **Protocol** → https
+* **Domain name** → example.com
+
+---
+
+ 2️⃣ DNS Lookup (Name → IP)
+
+Computers don’t understand names, only numbers.
+
+* Browser asks DNS server
+* DNS converts domain name into an IP address
+
+Example:
+
+```
+example.com → 93.184.216.34
+```
+
+---
+
+ 3️⃣ TCP Connection
+
+Browser establishes a connection with the server using:
+
+* TCP (Transmission Control Protocol)
+* Ensures reliable data transfer
+
+For HTTPS:
+
+* TLS handshake happens
+* Data becomes encrypted 🔐
+
+---
+
+ 4️⃣ HTTP / HTTPS Request
+
+Browser sends a request to the server:
+
+```
+GET /index.html HTTP/1.1
+```
+
+Request includes:
+
+* Method (GET / POST)
+* Headers
+* Cookies
+* User-Agent info
+
+---
+
+ 5️⃣ Server Processing
+
+The server:
+
+* Receives request
+* Runs backend code (PHP, Node.js, Python, Java)
+* Fetches data from database if needed
+* Prepares a response
+
+---
+
+ 6️⃣ HTTP Response
+
+Server sends back:
+
+* HTML
+* CSS
+* JavaScript
+* Images, videos, etc.
+
+Example response:
+
+```
+200 OK
+Content-Type: text/html
+```
+
+---
+
+ 7️⃣ Browser Rendering (Very Important)
+
+Browser displays the webpage by doing:
+
+### 🔹 HTML Parsing
+
+* Builds **DOM (Document Object Model)**
+
+### 🔹 CSS Parsing
+
+* Builds **CSSOM**
+* Combines with DOM → **Render Tree**
+
+### 🔹 Layout
+
+* Calculates element positions and sizes
+
+### 🔹 Painting
+
+* Draws pixels on screen 🎨
+
+---
+
+ 8️⃣ JavaScript Execution
+
+* JS runs using browser engine (V8, SpiderMonkey)
+* Handles clicks, animations, API calls
+* Can update DOM dynamically
+
+---
+
+ 9️⃣ Loading Extra Resources
+
+Browser also loads:
+
+* Images
+* Fonts
+* Videos
+* API data
+
+This happens "asynchronously".
+
+---
+
+ 🔁 What Happens on Click?
+
+When you click a button:
+
+* JavaScript event triggers
+* Browser may:
+
+  * Update UI
+  * Send API request
+  * Navigate to another page
+
+---
+
+## 📌 Simple Flow Diagram
+
+```
+User
+ ↓
+Browser
+ ↓
+DNS Server
+ ↓
+Web Server
+ ↓
+Response
+ ↓
+Browser Rendering
+ ↓
+Screen Output
+```
+
+---
+
+ Summary
+
+* Browser → DNS → Server → Response → Rendering
+* HTML builds structure
+* CSS styles content
+* JavaScript adds behavior
+* All happens in milliseconds
+
+
+
+
+7.Define CDN
+
+
+ CDN (Content Delivery Network)
+
+A CDN is a network of geographically distributed servers that work together to deliver web content faster and more efficiently to users.
+
+
+
+Definition
+
+A Content Delivery Network (CDN) stores copies of website content (images, videos, CSS, JavaScript, etc.) on multiple servers around the world and delivers it from the nearest server to the user.
+
+
+ Why CDN is used
+
+* Reduces website loading time ⚡
+* Decreases server load
+* Improves performance for global users
+* Increases availability and reliability
+
+---
+
+ How CDN works
+
+1. User requests a webpage
+2. CDN detects user location
+3. Content is served from the closest CDN server
+4. If content is not cached, CDN fetches it from the origin server
+
+
+ Example
+
+If a website server is in the USA and a user is in India:
+
+* Without CDN → request goes to USA server (slow)
+* With CDN → content served from India/nearby server (fast)
+
+---
+
+ Common CDN providers
+
+* Cloudflare
+* Akamai
+* AWS CloudFront
+* Google Cloud CDN
+
+
+ In short
+
+CDN = Faster, safer, and more reliable content delivery
+

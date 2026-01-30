@@ -1,0 +1,242 @@
+1.execute do while 7 program, math object, function structure execution
+
+
+
+ PART 1: DO–WHILE LOOP — 7 PROGRAMS
+
+ 1️⃣ Print numbers 1 to 5
+
+```js
+let i = 1;
+do {
+  console.log(i);
+  i++;
+} while (i <= 5);
+```
+
+---
+
+ 2️⃣ Print even numbers up to 10
+
+```js
+let i = 2;
+do {
+  console.log(i);
+  i += 2;
+} while (i <= 10);
+```
+
+---
+
+ 3️⃣ Sum of first 5 numbers
+
+```js
+let i = 1, sum = 0;
+do {
+  sum += i;
+  i++;
+} while (i <= 5);
+console.log("Sum =", sum);
+```
+
+---
+
+ 4️⃣ Reverse counting 5 to 1
+
+```js
+let i = 5;
+do {
+  console.log(i);
+  i--;
+} while (i >= 1);
+```
+
+---
+
+ 5️⃣ Multiplication table of 3
+
+```js
+let i = 1;
+do {
+  console.log("3 x " + i + " = " + (3 * i));
+  i++;
+} while (i <= 10);
+```
+
+---
+
+ 6️⃣ Execute at least once (false condition)
+
+```js
+let i = 10;
+do {
+  console.log("Executed once");
+  i++;
+} while (i < 5);
+```
+
+---
+
+ 7️⃣ Count digits of a number
+
+```js
+let num = 1234;
+let count = 0;
+do {
+  count++;
+  num = Math.floor(num / 10);
+} while (num > 0);
+console.log("Digits =", count);
+```
+
+---
+
+ PART 2: MATH OBJECT — PROGRAMS
+
+ 1️⃣ Find square root
+
+```js
+console.log(Math.sqrt(25));
+```
+
+---
+
+ 2️⃣ Find power
+
+```js
+console.log(Math.pow(2, 3)); // 8
+```
+
+---
+
+ 3️⃣ Find maximum
+
+```js
+console.log(Math.max(10, 20, 5));
+```
+
+---
+
+ 4️⃣ Find minimum
+
+```js
+console.log(Math.min(10, 20, 5));
+```
+
+---
+
+ 5️⃣ Round a number
+
+```js
+console.log(Math.round(4.6));
+```
+
+---
+
+ 6️⃣ Floor and Ceil
+
+```js
+console.log(Math.floor(4.9));
+console.log(Math.ceil(4.1));
+```
+
+---
+
+ 7️⃣ Random number (1–10)
+
+```js
+let rand = Math.floor(Math.random() * 10) + 1;
+console.log(rand);
+```
+
+---
+
+ 🔧 PART 3: FUNCTION STRUCTURE & EXECUTION
+
+ 📌 Function Structure
+
+```js
+function functionName(parameters) {
+  // function body
+  return value;
+}
+```
+
+---
+
+ 1️⃣ Simple function
+
+```js
+function greet() {
+  console.log("Hello World");
+}
+greet();
+```
+
+---
+
+ 2️⃣ Function with parameters
+
+```js
+function add(a, b) {
+  console.log(a + b);
+}
+add(5, 3);
+```
+
+---
+
+ 3️⃣ Function with return value
+
+```js
+function square(n) {
+  return n * n;
+}
+console.log(square(4));
+```
+
+---
+
+ 4️⃣ Function using Math object
+
+```js
+function areaOfCircle(r) {
+  return Math.PI * r * r;
+}
+console.log(areaOfCircle(5));
+```
+
+---
+
+ 5️⃣ Function inside loop
+
+```js
+function printNumber(n) {
+  console.log(n);
+}
+
+for (let i = 1; i <= 5; i++) {
+  printNumber(i);
+}
+```
+
+---
+
+ 6️⃣ Anonymous function
+
+```js
+let sum = function(a, b) {
+  return a + b;
+};
+console.log(sum(4, 6));
+```
+
+---
+
+ 7️⃣ Arrow function
+
+```js
+const multiply = (a, b) => a * b;
+console.log(multiply(3, 4));
+```
+
